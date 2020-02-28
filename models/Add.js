@@ -14,7 +14,7 @@ const addSchema = new Schema ({
     },
     category: {
         type: String,
-        enum: []
+        enum: ['Bricolage', 'Ménage', 'Visites de courtoisie', 'Courses']
     },
     description: String,
     addType: {
