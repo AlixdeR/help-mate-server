@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 const userModel = require("../models/User");
-const adModel = require("../models/Ad");
 const commentModel = require("../models/Comment");
 
 
@@ -23,7 +22,7 @@ router.get('/', (req, res, next) => {
     .catch(next);
   })
 
-  router.post("/:user_id'", uploader.single("image"), (req, res, next) => {
+  router.post("/:user_id'", (req, res, next) => {
     const {author, recipient, text, date, response} = req.body;
     const newComment = {
         author,
@@ -32,14 +31,14 @@ router.get('/', (req, res, next) => {
         date,
         response
     }
-    if (req.files) newComment.image = req.file.secure_url;
+
     commentModel
       .create(newComment)
       .then(createdComment =>
-      .then(comment => {
-        res.status(200).json(createdComment);
-      })
-      .catch(next);
+        userModel.findByIdAndUpdate(req.params.user_id, {$push : {comment : createdComment.id}})
+      .then(comment => res.status(200).json(comment))
+      .catch(next)
+      )
   });
 
   router.patch("/:id", (req, res, next) => {
@@ -54,10 +53,11 @@ router.get('/', (req, res, next) => {
   router.delete("/:id", (req, res, next) => {
     commentModel
       .findByIdAndDelete(req.params.id)
-      .then(deletedComment => {
-        res.status(200).json(deletedComment);
-      })
-      .catch(next);
+      .then(deletedComment => 
+        userModel.findByIdAndUpdate(deletedComment.author, {$pull: { "configuration.links": deletedComment.id} })
+        .then(user => res.status(200).json(user))
+        .catch(next))
+    .catch (next)
   });
   
   

@@ -44,7 +44,7 @@ router.patch('/:id', function(req, res, next) {
 });
 
 router.delete('/:id', function(req, res, next) {
-    adModel.findByIdAndDelete(req.params.id).populate('ads')
+    adModel.findByIdAndDelete(req.params.id)
     .then( deletedAd =>
         userModel.findByIdAndUpdate(deletedAdd.author, {$pull: { "configuration.links": deletedAd.id} })
         .then(user => res.status(200).json(user))
