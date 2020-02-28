@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema ({
+    username: String,
     name: String,
     lastName: String,
     email: {
@@ -29,6 +30,11 @@ const userSchema = new Schema ({
     status: {
         type: String,
         enum: ["particulier", "association", "entreprise"]
+    },
+    role: {
+        type: String,
+        enum: ['admin', 'user'],
+        default: 'user'
     }
 })
 
