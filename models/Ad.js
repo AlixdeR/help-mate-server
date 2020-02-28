@@ -14,16 +14,16 @@ const adSchema = new Schema ({
     },
     category: {
         type: String,
-        enum: ['Bricolage', 'Ménage', 'Visites de courtoisie', 'Courses']
+        enum: ['Bricolage', 'Ménage', "Visites de courtoisie", 'Courses']
     },
     description: String,
     adType: {
         type: String,
         enum: ["service", "demande"]
     },
-    adress: {
+    address: {
         street: String,
-        zipCode: Number,
+        zipCode: String,
         city: String
     },
     image: String,
@@ -31,7 +31,7 @@ const adSchema = new Schema ({
         type : Date,
         default: Date.now
     },
-    avaibility: String,
+    availability: String,
     active: {
         type : Boolean,
         default: true
