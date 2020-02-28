@@ -18,7 +18,7 @@ router.get('/:id', function (req, res, next) {
 });
 
 
-router.post('/', async (req, res, next) => {
+router.post('/', uploader.single("image"), async (req, res, next) => {
 
     const {
         title,
@@ -37,10 +37,8 @@ router.post('/', async (req, res, next) => {
         adType,
         address
     }
-    // return res.send("ok")
-    console.log("so far...");
 
-    // if (req.files) newAd.image = req.file.secure_url;
+    if (req.files) newAd.image = req.file.secure_url;
     try {
         const dbRes = await adModel.create(newAd)
         res.status(200).json(dbRes)
@@ -50,7 +48,6 @@ router.post('/', async (req, res, next) => {
 
 });
 
-// uploader.single("image")
 // .then( createdAd => 
 //     userModel.findByIdAndUpdate(req.params.user_id, {$push : {ad : createdAd.id}})
 // )

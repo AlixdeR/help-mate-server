@@ -23,7 +23,7 @@ const adSchema = new Schema ({
     },
     address: {
         street: String,
-        zipCode: String,
+        zipCode: Number,
         city: String
     },
     image: String,
