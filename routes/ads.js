@@ -18,8 +18,8 @@ router.get('/:id', function (req, res, next) {
 });
 
 
-router.post('/', uploader.single("image"), async (req, res, next) => {
-
+router.post('/', uploader.single("avatar"), (req, res, next) => {
+console.log(req.body)
     const {
         title,
         category,
@@ -37,15 +37,16 @@ router.post('/', uploader.single("image"), async (req, res, next) => {
         adType,
         address
     }
-
-    if (req.files) newAd.image = req.file.secure_url;
-    try {
-        const dbRes = await adModel.create(newAd)
-        res.status(200).json(dbRes)
-    } catch (e) {
-        next(e)
-    }
-
+    newAd.author = req.user._id
+    // if (req.files) newAd.image = req.file.secure_url;
+    adModel.create(newAd)
+        .then(newAdInDB=> 
+            userModel.findByIdAndUpdate(req.user._id, {$push : {ad : newAdInDB.id}})
+            .then(dbRes => {console.log(dbRes);
+                res.status(200).json('ad created')})
+            .catch(next)
+            )
+        .catch(next)
 });
 
 // .then( createdAd => 
