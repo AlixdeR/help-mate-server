@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const userModel = require("../models/User");
-const addModel = require("../models/Add");
+const adModel = require("../models/Ad");
 const commentModel = require("../models/Comment");
 
 
@@ -23,10 +23,20 @@ router.get('/', (req, res, next) => {
     .catch(next);
   })
 
-  router.post("/", (req, res, next) => {
+  router.post("/:user_id'", uploader.single("image"), (req, res, next) => {
+    const {author, recipient, text, date, response} = req.body;
+    const newComment = {
+        author,
+        recipient,
+        text,
+        date,
+        response
+    }
+    if (req.files) newComment.image = req.file.secure_url;
     commentModel
-      .create(req.body)
-      .then(createdComment => {
+      .create(newComment)
+      .then(createdComment =>
+      .then(comment => {
         res.status(200).json(createdComment);
       })
       .catch(next);

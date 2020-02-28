@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const userModel = require("../models/User");
-
+const adModel = require("../models/Ad");
+const commentModel = require("../models/Comment");
 
 router.get('/', (req, res, next) => {
   userModel
@@ -21,15 +22,6 @@ router.get('/:id', (req, res, next) => {
   .catch(next);
 })
 
-router.post("/", (req, res, next) => {
-  //cloudinary
-  userModel
-    .create(req.body)
-    .then(createdUser => {
-      res.status(200).json(createdUser);
-    })
-    .catch(next);
-});
 
 router.patch("/:id", (req, res, next) => {
   userModel
@@ -41,6 +33,8 @@ router.patch("/:id", (req, res, next) => {
 });
 
 router.delete("/:id", (req, res, next) => {
+  const deleteUser = userModel.findByIdAndDelete(req.params.id)
+  const deleteAds = adModel.find({})
   userModel
     .findByIdAndDelete(req.params.id)
     .then(deletedUser => {

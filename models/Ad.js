@@ -2,7 +2,7 @@ const mongoose = require("mongoose"); // import mongoose dependencie
 
 const Schema = mongoose.Schema;
 
-const addSchema = new Schema ({
+const adSchema = new Schema ({
     title: String,
     author: {
         type: Schema.Types.ObjectId,
@@ -17,7 +17,7 @@ const addSchema = new Schema ({
         enum: []
     },
     description: String,
-    addType: {
+    adType: {
         type: String,
         enum: ["service", "demande"]
     },
@@ -38,6 +38,6 @@ const addSchema = new Schema ({
     }
 })
 
-const addModel = mongoose.model("Add", addSchema);
+const adModel = mongoose.model("Ad", adSchema);
 
-module.exports = addModel;
+module.exports = adModel;
