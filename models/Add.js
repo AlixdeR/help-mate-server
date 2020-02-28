@@ -27,9 +27,15 @@ const addSchema = new Schema ({
         city: String
     },
     image: String,
-    date: Date,
+    date: {
+        type : Date,
+        default: Date.now
+    },
     avaibility: String,
-    active: true
+    active: {
+        type : Boolean,
+        default: true
+    }
 })
 
 const addModel = mongoose.model("Add", addSchema);
