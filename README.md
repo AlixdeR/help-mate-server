@@ -1,1 +1,0 @@
-# help-mate-server
