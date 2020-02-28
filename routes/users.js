@@ -15,11 +15,11 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
   userModel
-  .findById(req.params.id)
-  .then(user => {
-    res.status(200).json(users);
-  })
-  .catch(next);
+    .findById(req.params.id)
+    .then(user => {
+      res.status(200).json(users);
+    })
+    .catch(next);
 })
 
 
@@ -34,12 +34,11 @@ router.patch("/:id", (req, res, next) => {
 
 router.delete("/:id", (req, res, next) => {
   const deleteUser = userModel.findByIdAndDelete(req.params.id)
-  const deleteAds = adModel.find({})
-  userModel
-    .findByIdAndDelete(req.params.id)
-    .then(deletedUser => {
-      res.status(200).json(deletedUser);
-    })
+  const deleteAds = adModel.deleteMany({ author: req.param.id })
+  const deleteComments = commentModel.deleteMany({ author: req.param.id })
+
+  Promise.all([deleteUser, deleteAds, deleteComments])
+    .then(dbRes => res.status(200).json(dbRes))
     .catch(next);
 });
 

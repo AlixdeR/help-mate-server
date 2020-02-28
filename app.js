@@ -11,11 +11,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-var addRouter = require("./routes/adds");
+var adRouter = require("./routes/ads");
 var userRouter = require("./routes/users");
 var commentRouter = require("./routes/comments");
 
-app.use("/adds", addRouter);
+app.use("/ads", adRouter);
 app.use("/users", userRouter);
 app.use("/comments", commentRouter);
 

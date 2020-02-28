@@ -18,7 +18,7 @@ const userSchema = new Schema ({
         ref: "Comment"
     }],
     avatar: String,
-    ad: [{
+    ads: [{
         type: Schema.Types.ObjectId,
         ref: "Ad"
     }],
