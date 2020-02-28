@@ -1,7 +1,7 @@
 var express = require('express');
-var router = express.Router();
-var adModel = require('../models/Ad')
-var userModel = require('../models/User')
+var router = new express.Router();
+var adModel = require('../models/Ad');
+var userModel = require('../models/User');
 const uploader = require("../config/cloudinary");
 
 /* GET users listing. */
@@ -10,6 +10,7 @@ router.get('/', function (req, res, next) {
         .then(ads => res.status(200).json(ads))
         .catch(next)
 });
+
 router.get('/:id', function (req, res, next) {
     adModel.findById(req.params.id)
         .then(ad => res.status(200).json(ad))
@@ -41,25 +42,9 @@ router.post('/', async (req, res, next) => {
 
     // if (req.files) newAd.image = req.file.secure_url;
     try {
-        console.log("inna try...");
-        const x = await adModel.create({
-            "title": "test gui",
-            "category": "Visites de courtoisie",
-            "description": "test gui",
-            "availability": "test gui",
-            "adType": "service",
-            "address": {"street": "14 RUE DE L ORILLON", "zipCode": "75011", "city": "PARIS"}
-        })
-        console.log(x);
-        console.log("... so good");
-        res.status(200).json({
-            msg: "ok"
-        })
+        const dbRes = await adModel.create(newAd)
+        res.status(200).json(dbRes)
     } catch (e) {
-        console.log("et c'est le drame");
-
-        console.log(e);
-
         next(e)
     }
 
