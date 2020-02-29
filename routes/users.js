@@ -3,6 +3,7 @@ var router = express.Router();
 const userModel = require("../models/User");
 const adModel = require("../models/Ad");
 const commentModel = require("../models/Comment");
+const uploader = require("./../config/cloudinary");
 
 router.get('/', (req, res, next) => {
   userModel
@@ -14,21 +15,22 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  console.log(req.params.id)
   userModel
     .findById(req.params.id).populate('ads')
     .then(user => {
-      console.log(user)
       res.status(200).json(user);
     })
     .catch(next);
 })
 
 
-router.patch("/:id", (req, res, next) => {
+router.patch("/:id", uploader.single("avatar"),(req, res, next) => {
+  const newUser = {...req.body};
+  if (req.file) newUser.avatar = req.file.secure_url
   userModel
-    .findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .findByIdAndUpdate(req.params.id, newUser, { new: true })
     .then(user => {
+      // console.log(user)
       res.status(200).json(user);
     })
     .catch(next);
