@@ -60,7 +60,9 @@ if (_DEVMODE === true) {
 var adRouter = require("./routes/ads");
 var userRouter = require("./routes/users");
 var commentRouter = require("./routes/comments");
+var authRouter = require("./routes/auth")
 
+app.use("/auth", authRouter);
 app.use("/ads", adRouter);
 app.use("/users", userRouter);
 app.use("/comments", commentRouter);
