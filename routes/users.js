@@ -14,10 +14,12 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
+  console.log(req.params.id)
   userModel
     .findById(req.params.id).populate('ads')
     .then(user => {
-      res.status(200).json(users);
+      console.log(user)
+      res.status(200).json(user);
     })
     .catch(next);
 })

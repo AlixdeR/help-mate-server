@@ -38,21 +38,16 @@ console.log(req.body)
         address
     }
     newAd.author = req.user._id
-    // if (req.files) newAd.image = req.file.secure_url;
+    if (req.files) newAd.avatar = req.file.secure_url;
     adModel.create(newAd)
         .then(newAdInDB=> 
-            userModel.findByIdAndUpdate(req.user._id, {$push : {ad : newAdInDB.id}})
+            userModel.findByIdAndUpdate(req.user._id, {$push : {ads : newAdInDB.id}})
             .then(dbRes => {console.log(dbRes);
                 res.status(200).json('ad created')})
             .catch(next)
             )
         .catch(next)
 });
-
-// .then( createdAd => 
-//     userModel.findByIdAndUpdate(req.params.user_id, {$push : {ad : createdAd.id}})
-// )
-// .catch (next)
 
 router.patch('/:id', function (req, res, next) {
     adModel.findByIdAndUpdate(req.params.id, req.body, {
