@@ -7,7 +7,7 @@ const cors = require("cors");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-const _DEVMODE = false;
+const _DEVMODE = true;
 
 var app = express();
 
@@ -60,12 +60,12 @@ if (_DEVMODE === true) {
 var adRouter = require("./routes/ads");
 var userRouter = require("./routes/users");
 var commentRouter = require("./routes/comments");
-var authRouter = require("./routes/auth")
+var authRouter = require("./routes/auth");
 
-app.use("/auth", authRouter);
 app.use("/ads", adRouter);
 app.use("/users", userRouter);
 app.use("/comments", commentRouter);
+app.use("/", authRouter);
 
 // app.get("*", function(req, res) {
 //   res.status(404).json("what???");
