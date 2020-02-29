@@ -17,7 +17,7 @@ router.get('/:id', (req, res, next) => {
   userModel
     .findById(req.params.id).populate('ads')
     .then(user => {
-      res.status(200).json(users);
+      res.status(200).json(user);
     })
     .catch(next);
 })
