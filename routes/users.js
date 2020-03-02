@@ -30,7 +30,6 @@ router.patch("/:id", uploader.single("avatar"),(req, res, next) => {
   userModel
     .findByIdAndUpdate(req.params.id, newUser, { new: true })
     .then(user => {
-      // console.log(user)
       res.status(200).json(user);
     })
     .catch(next);

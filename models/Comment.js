@@ -12,8 +12,12 @@ const commentSchema = new Schema ({
         ref: "User"
     },
     text: String,
-    date: Date,
+    date: {
+        type: Date,
+        default: Date.now
+    },
     response: [String]
+
 })
 
 const commentModel = mongoose.model("Comment", commentSchema);
