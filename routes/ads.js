@@ -18,7 +18,7 @@ router.get('/:id', function (req, res, next) {
 });
 
 
-router.post('/', uploader.single("avatar"), (req, res, next) => {
+router.post('/', uploader.single("image"), (req, res, next) => {
 console.log(req.body)
     const {
         title,
@@ -38,7 +38,8 @@ console.log(req.body)
         address
     }
     newAd.author = req.user._id
-    if (req.files) newAd.avatar = req.file.secure_url;
+    console.log(req.file)
+    if (req.file) newAd.image = req.file.secure_url;
     adModel.create(newAd)
         .then(newAdInDB=> 
             userModel.findByIdAndUpdate(req.user._id, {$push : {ads : newAdInDB.id}})
@@ -50,6 +51,7 @@ console.log(req.body)
 });
 
 router.patch('/:id', function (req, res, next) {
+    console.log(req.body,"this is in patch")
     adModel.findByIdAndUpdate(req.params.id, req.body, {
             new: true
         })
