@@ -1,44 +1,51 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 const userModel = require("../models/User");
 const commentModel = require("../models/Comment");
 
+// router.get('/', (req, res, next) => {
+//   commentModel
+//     .find()
+//     .then(comments => {
+//       res.status(200).json(comments);
+//     })
+//     .catch(next);
+// });
 
-router.get('/', (req, res, next) => {
+router.get("/:id", (req, res, next) => {
   commentModel
-    .find()
-    .then(comments => {
+    .findById(req.params.id)
+    .then(user => {
       res.status(200).json(comments);
     })
     .catch(next);
 });
 
-router.get('/:id', (req, res, next) => {
-  commentModel
-  .findById(req.params.id)
-  .then(user => {
-    res.status(200).json(comments);
-  })
-  .catch(next);
-})
-
-router.post("/:user_id", (req, res, next) => {
-  const {author, recipient, text, date, response} = req.body;
+router.post("/:userId", (req, res, next) => {
+  console.log("coucou")
+  const { text, rate } = req.body;
   const newComment = {
-      author,
-      recipient,
-      text,
-      date,
-      response
-  }
+    text
+  };
 
   commentModel
     .create(newComment)
     .then(createdComment =>
-      userModel.findByIdAndUpdate(req.params.user_id, {$push : {comment : createdComment.id}})
+      userModel
+        .findByIdAndUpdate(
+          req.params.userId,
+          {
+            $push: { comments: createdComment._id, rates: rate }
+          },
+          { new: true }
+        )
+        .then(updatedUser => {
+          console.log(updatedUser);
+          res.send("Ok");
+        })
     )
-    .then(comment => res.status(200).json(comment))
-    .catch(next)
+    .catch(err => console.log(err));
+  // .then(userModel.create(newRate) => res.status(200).json(comment)).catch(next);
 });
 
 router.patch("/:id", (req, res, next) => {
@@ -53,15 +60,15 @@ router.patch("/:id", (req, res, next) => {
 router.delete("/:id", (req, res, next) => {
   commentModel
     .findByIdAndDelete(req.params.id)
-    .then(deletedComment => 
-      userModel.findByIdAndUpdate(deletedComment.author, {$pull: { "configuration.links": deletedComment.id} })
-      .then(user => res.status(200).json(user))
-      .catch(next))
-  .catch (next)
+    .then(deletedComment =>
+      userModel
+        .findByIdAndUpdate(deletedComment.author, {
+          $pull: { "configuration.links": deletedComment.id }
+        })
+        .then(user => res.status(200).json(user))
+        .catch(next)
+    )
+    .catch(next);
 });
 
-
 module.exports = router;
-
-
-
