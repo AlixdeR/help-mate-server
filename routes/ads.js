@@ -25,7 +25,6 @@ console.log(req.body)
         category,
         description,
         adType,
-        address,
         availability
     } = req.body;
 
@@ -35,8 +34,9 @@ console.log(req.body)
         category,
         description,
         adType,
-        address
     }
+
+    newAd.address = {street: req.body.street, zipCode: req.body.zipCode, city: req.body.city}    
     newAd.author = req.user._id
     console.log(req.file)
     if (req.file) newAd.image = req.file.secure_url;
@@ -51,7 +51,6 @@ console.log(req.body)
 });
 
 router.patch('/:id', function (req, res, next) {
-    console.log(req.body,"this is in patch")
     adModel.findByIdAndUpdate(req.params.id, req.body, {
             new: true
         })
