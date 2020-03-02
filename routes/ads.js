@@ -61,14 +61,14 @@ router.patch('/:id', function (req, res, next) {
 router.delete('/:id', function (req, res, next) {
     console.log(req.params.id)
     adModel.findByIdAndDelete(req.params.id)
-        .then(deletedAd => console.log("ok"))
-            // userModel.findByIdAndUpdate(deletedAd.author, {
-            //     $pull: {
-            //         "configuration.links": deletedAd.id
-            //     }
-            // })
-            // .then(user => res.status(200).json(user))
-            // .catch(next))
+        .then(deletedAd => 
+            userModel.findByIdAndUpdate(deletedAd.author, {
+                $pull: {
+                    "configuration.links": deletedAd.id
+                }
+            })
+            .then(user => res.status(200).json(user))
+            .catch(next))
         .catch(next)
 });
 
