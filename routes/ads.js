@@ -18,14 +18,13 @@ router.get('/:id', function (req, res, next) {
 });
 
 
-router.post('/', uploader.single("avatar"), (req, res, next) => {
+router.post('/', uploader.single("image"), (req, res, next) => {
 console.log(req.body)
     const {
         title,
         category,
         description,
         adType,
-        address,
         availability,
         lat,
         lng
@@ -37,15 +36,15 @@ console.log(req.body)
         category,
         description,
         adType,
-        address
     }
+    newAd.address = {street: req.body.street, zipCode: req.body.zipCode, city: req.body.city}    
     newAd.author = req.user._id
     let location = {
         type: 'Point',
         coordinates: [lng, lat]
       };
       newAd.location = location;
-    if (req.files) newAd.avatar = req.file.secure_url;
+    if (req.file) newAd.image = req.file.secure_url;
     adModel.create(newAd)
         .then(newAdInDB=> 
             userModel.findByIdAndUpdate(req.user._id, {$push : {ads : newAdInDB.id}})
@@ -65,9 +64,10 @@ router.patch('/:id', function (req, res, next) {
 });
 
 router.delete('/:id', function (req, res, next) {
+    console.log(req.params.id)
     adModel.findByIdAndDelete(req.params.id)
-        .then(deletedAd =>
-            userModel.findByIdAndUpdate(deletedAdd.author, {
+        .then(deletedAd => 
+            userModel.findByIdAndUpdate(deletedAd.author, {
                 $pull: {
                     "configuration.links": deletedAd.id
                 }
