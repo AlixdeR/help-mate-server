@@ -26,6 +26,10 @@ const adSchema = new Schema ({
         zipCode: Number,
         city: String
     },
+    location : {
+        type: { type: String },
+        coordinates: [Number]
+    },
     image: String,
     date: {
         type : Date,
@@ -37,7 +41,7 @@ const adSchema = new Schema ({
         default: true
     }
 })
-
+adSchema.index({location: '2dsphere'});
 const adModel = mongoose.model("Ad", adSchema);
 
 module.exports = adModel;

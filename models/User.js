@@ -5,6 +5,9 @@ const userSchema = new Schema ({
     username: String,
     name: String,
     lastName: String,
+    birthday: {
+        type : Date
+    },
     email: {
         type: String,
         unique: true,
@@ -18,7 +21,10 @@ const userSchema = new Schema ({
         type: Schema.Types.ObjectId,
         ref: "Comment"
     }],
-    avatar: String,
+    avatar: {
+        type: String,
+        default : 'https://www.bitgab.com/uploads/profile/files/default.png'
+    },
     ads: [{
         type: Schema.Types.ObjectId,
         ref: "Ad"
@@ -39,7 +45,11 @@ const userSchema = new Schema ({
         type: String,
         enum: ['admin', 'user'],
         default: 'user'
-    }
+    },
+    account_creation : {
+        type : Date,
+        default: Date.now
+    },
 })
 
 

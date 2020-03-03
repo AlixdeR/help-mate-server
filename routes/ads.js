@@ -25,7 +25,9 @@ console.log(req.body)
         category,
         description,
         adType,
-        availability
+        availability,
+        lat,
+        lng
     } = req.body;
 
     const newAd = {
@@ -35,10 +37,13 @@ console.log(req.body)
         description,
         adType,
     }
-
     newAd.address = {street: req.body.street, zipCode: req.body.zipCode, city: req.body.city}    
     newAd.author = req.user._id
-    console.log(req.file)
+    let location = {
+        type: 'Point',
+        coordinates: [lng, lat]
+      };
+      newAd.location = location;
     if (req.file) newAd.image = req.file.secure_url;
     adModel.create(newAd)
         .then(newAdInDB=> 
