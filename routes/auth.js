@@ -10,7 +10,7 @@ const minPasswordLength = 4;
 router.post("/signup", uploader.single("avatar"), (req, res, next) => {
 
   var errorMsg = "";
-  const { username, name, lastName, password, description,phone, status, email, gender } = req.body;
+  const { username, name, lastName, password, description,phone, status, email, gender, birthday } = req.body;
   // @todo : best if email validation here or check with a regex in the User model
   if (!password || !email) errorMsg += "Remplissez les champs e-mail et mdp.\n";
 
@@ -35,6 +35,7 @@ router.post("/signup", uploader.single("avatar"), (req, res, next) => {
     phone,
     status,
     gender,
+    birthday,
     password: hashPass
   };
 

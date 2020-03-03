@@ -46,9 +46,9 @@ app.use(passport.session());
 if (_DEVMODE === true) {
   app.use(function devMode(req, res, next) {
     req.user = {
-      _id: "5e5a651d7f8dca1af6d61117",
-      username: "admin@artistify.io",
-      email: "talesoflalou@gmail.com",
+      _id: "5e5cde4d4c044a34a4953e51",
+      username: "Gégé du 75",
+      email: "gege@gmail.com",
       avatar: "https://res.cloudinary.com/gdaconcept/image/upload/v1575298339/user-pictures/jadlcjjnspfhknucjfkd.png",
       // role: "admin",
     };
@@ -77,4 +77,3 @@ app.use("/", authRouter);
 // });
 
 module.exports = app;
-//res.status(500).json(err)

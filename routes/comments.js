@@ -12,14 +12,15 @@ const commentModel = require("../models/Comment");
 //     .catch(next);
 // });
 
-router.get("/:id", (req, res, next) => {
-  commentModel
-    .findById(req.params.id)
-    .then(user => {
-      res.status(200).json(comments);
-    })
-    .catch(next);
-});
+// router.get("/:userId", (req, res, next) => {
+//   userModel
+//   .findById(req.params.userId) // fetch all user 
+//     .populate("comments")
+//     .then(user => {
+//       res.status(200).json(user);
+//     })
+//     .catch(next);
+// });
 
 router.post("/:userId", (req, res, next) => {
   const { text, rate } = req.body;
@@ -47,14 +48,14 @@ router.post("/:userId", (req, res, next) => {
   // .then(userModel.create(newRate) => res.status(200).json(comment)).catch(next);
 });
 
-router.patch("/:id", (req, res, next) => {
-  commentModel
-    .findByIdAndUpdate(req.params.id, req.body, { new: true })
-    .then(comment => {
-      res.status(200).json(comment);
-    })
-    .catch(next);
-});
+// router.patch("/:id", (req, res, next) => {
+//   commentModel
+//     .findByIdAndUpdate(req.params.id, req.body, { new: true })
+//     .then(comment => {
+//       res.status(200).json(comment);
+//     })
+//     .catch(next);
+// });
 
 router.delete("/:id", (req, res, next) => {
   commentModel
