@@ -46,9 +46,9 @@ app.use(passport.session());
 if (_DEVMODE === true) {
   app.use(function devMode(req, res, next) {
     req.user = {
-      _id: "5e5a653f2cbd9203e65c38a4",
-      username: "Bibi du 32",
-      email: "bibi@gmail.com",
+      _id: "5e5a651d7f8dca1af6d61117",
+      username: "admin@artistify.io",
+      email: "talesoflalou@gmail.com",
       avatar: "https://res.cloudinary.com/gdaconcept/image/upload/v1575298339/user-pictures/jadlcjjnspfhknucjfkd.png",
       // role: "admin",
     };

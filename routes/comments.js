@@ -22,7 +22,6 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.post("/:userId", (req, res, next) => {
-  console.log("coucou")
   const { text, rate } = req.body;
   const newComment = {
     text
