@@ -19,7 +19,7 @@ router.get('/:id', function (req, res, next) {
 
 
 router.post('/', uploader.single("image"), (req, res, next) => {
-console.log(req.body)
+    console.log(req.body)
     const {
         title,
         category,
@@ -36,17 +36,27 @@ console.log(req.body)
         adType,
     }
 
-    newAd.address = {street: req.body.street, zipCode: req.body.zipCode, city: req.body.city}    
+    newAd.address = {
+        street: req.body.street,
+        zipCode: req.body.zipCode,
+        city: req.body.city
+    }
     newAd.author = req.user._id
     console.log(req.file)
     if (req.file) newAd.image = req.file.secure_url;
     adModel.create(newAd)
-        .then(newAdInDB=> 
-            userModel.findByIdAndUpdate(req.user._id, {$push : {ads : newAdInDB.id}})
-            .then(dbRes => {console.log(dbRes);
-                res.status(200).json('ad created')})
+        .then(newAdInDB =>
+            userModel.findByIdAndUpdate(req.user._id, {
+                $push: {
+                    ads: newAdInDB.id
+                }
+            })
+            .then(dbRes => {
+                console.log(dbRes);
+                res.status(200).json('ad created')
+            })
             .catch(next)
-            )
+        )
         .catch(next)
 });
 
@@ -61,11 +71,14 @@ router.patch('/:id', function (req, res, next) {
 router.delete('/:id', function (req, res, next) {
     console.log(req.params.id)
     adModel.findByIdAndDelete(req.params.id)
-        .then(deletedAd => 
+        .then(deletedAd =>
             userModel.findByIdAndUpdate(deletedAd.author, {
                 $pull: {
-                    "configuration.links": deletedAd.id
+                    // "configuration.links": deletedAd.id
+                    ads: deletedAd.id
                 }
+            }, {
+                new: true
             })
             .then(user => res.status(200).json(user))
             .catch(next))
