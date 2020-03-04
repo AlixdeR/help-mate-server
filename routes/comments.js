@@ -14,7 +14,7 @@ const commentModel = require("../models/Comment");
 
 // router.get("/:userId", (req, res, next) => {
 //   userModel
-//   .findById(req.params.userId) // fetch all user 
+//   .findById(req.params.userId) // fetch all user
 //     .populate("comments")
 //     .then(user => {
 //       res.status(200).json(user);
@@ -23,14 +23,18 @@ const commentModel = require("../models/Comment");
 // });
 
 router.post("/:userId", (req, res, next) => {
-  const { text, rate } = req.body;
+  const { currentResponseId, text, rate } = req.body;
   const newComment = {
-    text
+    text,
   };
+
+  if (currentResponseId) {
+    newComment.response= currentResponseId;
+  }
 
   commentModel
     .create(newComment)
-    .then(createdComment =>
+    .then(createdComment => {
       userModel
         .findByIdAndUpdate(
           req.params.userId,
@@ -43,8 +47,9 @@ router.post("/:userId", (req, res, next) => {
           console.log(updatedUser);
           res.send("Ok");
         })
-    )
-    .catch(err => console.log(err));
+      }
+    ).catch(dbErr => console.log(dbErr))
+    
   // .then(userModel.create(newRate) => res.status(200).json(comment)).catch(next);
 });
 
@@ -57,18 +62,18 @@ router.post("/:userId", (req, res, next) => {
 //     .catch(next);
 // });
 
-router.delete("/:id", (req, res, next) => {
-  commentModel
-    .findByIdAndDelete(req.params.id)
-    .then(deletedComment =>
-      userModel
-        .findByIdAndUpdate(deletedComment.author, {
-          $pull: { "configuration.links": deletedComment.id }
-        })
-        .then(user => res.status(200).json(user))
-        .catch(next)
-    )
-    .catch(next);
-});
+// router.delete("/:id", (req, res, next) => {
+//   commentModel
+//     .findByIdAndDelete(req.params.id)
+//     .then(deletedComment =>
+//       userModel
+//         .findByIdAndUpdate(deletedComment.author, {
+//           $pull: { "clsonfiguration.links": deletedComment.id }
+//         })
+//         .then(user => res.status(200).json(user))
+//         .catch(next)
+//     )
+//     .catch(next);
+// });
 
 module.exports = router;

@@ -37,11 +37,7 @@ router.post('/', uploader.single("image"), (req, res, next) => {
         description,
         adType,
     }
-    newAd.address = {
-        street: req.body.street,
-        zipCode: req.body.zipCode,
-        city: req.body.city
-    }
+    newAd.address = {street: req.body.street, zipCode: req.body.zipCode, city: req.body.city}    
     newAd.author = req.user._id
     let location = {
         type: 'Point',
