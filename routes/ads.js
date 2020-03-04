@@ -11,6 +11,17 @@ router.get('/', function (req, res, next) {
         .catch(next)
 });
 
+router.get("/search", async (req, res, next) => {
+    const regExp = new RegExp(req.query.q, "i");
+    const adsSearch = adModel
+    .find({$or: [{title: regExp}, {description: regExp}, {availabitlity: regExp}]})
+    .then(dbRes => {
+        console.log(dbRes);
+        res.json({ dbRes })
+    })
+    .catch(next);
+})
+
 router.get('/:id', function (req, res, next) {
     adModel.findById(req.params.id)
         .then(ad => res.status(200).json(ad))
