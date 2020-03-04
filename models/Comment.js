@@ -11,6 +11,7 @@ const commentSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User"
   },
+  isResponse: Boolean,
   text: String,
   date: { type: Date, default: new Date() },
   response: [{

@@ -1,5 +1,6 @@
 require("dotenv").config();
-require("./config/mongo")
+require("./config/mongo");
+require("./config/passport");
 var express = require("express");
 const session = require("express-session"); //sessions make data persist between http calls
 const passport = require("passport"); // auth library (needs sessions)
@@ -7,7 +8,7 @@ const cors = require("cors");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-const _DEVMODE = true;
+const _DEVMODE = false;
 
 var app = express();
 

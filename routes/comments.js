@@ -31,7 +31,8 @@ router.post("/:userId", (req, res, next) => {
   // if (currentResponseId) {
   //   newComment.response = currentResponseId;
   // }
-
+  
+  newComment.isResponse = currentResponseId ? true : false;
   commentModel
     .create(newComment)
     .then(createdComment => {
