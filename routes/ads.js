@@ -13,8 +13,10 @@ router.get('/', function (req, res, next) {
 
 router.get("/search", async (req, res, next) => {
     const regExp = new RegExp(req.query.q, "i");
+    const category = req.query.category;
+    console.log(req.query)
     const adsSearch = adModel
-    .find({$or: [{title: regExp}, {description: regExp}, {availabitlity: regExp}]})
+    .find({$and: [{$or: [{title: regExp}, {description: regExp}, {availabitlity: regExp}]}, {category: category}]})
     .then(dbRes => {
         console.log(dbRes);
         res.json({ dbRes })
