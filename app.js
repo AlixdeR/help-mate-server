@@ -46,7 +46,7 @@ app.use(passport.session());
 if (_DEVMODE === true) {
   app.use(function devMode(req, res, next) {
     req.user = {
-      _id: "5e5e4ec39c4bfe1c397aaf77",
+      _id: "5e5fb68e186c1726647ccfc9",
       username: "wen",
       email: "wen@wen.com",
       avatar: "https://res.cloudinary.com/gdaconcept/image/upload/v1575298339/user-pictures/jadlcjjnspfhknucjfkd.png",

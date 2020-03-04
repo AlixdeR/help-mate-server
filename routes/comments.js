@@ -44,6 +44,7 @@ router.post("/:userId", (req, res, next) => {
           res.send("Ok");
         })
     )
+    
     .catch(err => console.log(err));
   // .then(userModel.create(newRate) => res.status(200).json(comment)).catch(next);
 });
