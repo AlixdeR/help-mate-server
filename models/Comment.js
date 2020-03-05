@@ -11,12 +11,13 @@ const commentSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User"
   },
+  isResponse: Boolean,
   text: String,
   date: { type: Date, default: new Date() },
-  response: {
+  response: [{
       type: Schema.Types.ObjectId,
       ref: "Comment"
-    }
+    }]
 });
 
 const commentModel = mongoose.model("Comment", commentSchema);

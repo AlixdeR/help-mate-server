@@ -25,31 +25,74 @@ const commentModel = require("../models/Comment");
 router.post("/:userId", (req, res, next) => {
   const { currentResponseId, text, rate } = req.body;
   const newComment = {
-    text,
+    text
   };
 
-  if (currentResponseId) {
-    newComment.response= currentResponseId;
-  }
+  // if (currentResponseId) {
+  //   newComment.response = currentResponseId;
+  // }
 
+  newComment.isResponse = currentResponseId ? true : false;
   commentModel
     .create(newComment)
     .then(createdComment => {
-      userModel
-        .findByIdAndUpdate(
-          req.params.userId,
-          {
-            $push: { comments: createdComment._id, rates: rate }
-          },
-          { new: true }
-        )
-        .then(updatedUser => {
-          console.log(updatedUser);
-          res.send("Ok");
-        })
+      if (currentResponseId) {
+        commentModel
+          .findByIdAndUpdate(
+            currentResponseId,
+            {
+              $push: { response: createdComment._id }
+            },
+            { new: true }
+          )
+          .then(updatedComment => {
+            userModel
+              .findByIdAndUpdate(
+                req.params.userId,
+                {
+                  $push: { comments: createdComment._id, rates: rate }
+                },
+                { new: true }
+              )
+              .populate("ads")
+              .populate({
+                path: "comments",
+                populate: {
+                  path: "response"
+                }
+              })
+              .then(updatedUser => {
+                res.json(updatedUser);
+              })
+              .catch(next);
+          })
+          .catch(err => {
+            next(err);
+          });
+      } else {
+        userModel
+          .findByIdAndUpdate(
+            req.params.userId,
+            {
+              $push: { comments: createdComment._id, rates: rate }
+            },
+            { new: true }
+          )
+          .populate("ads")
+          .populate({
+            path: "comments",
+            populate: {
+              path: "response"
+            }
+          })
+          .then(updatedUser => {
+            res.send(updatedUser);
+          })
+          .catch(next);
       }
-    ).catch(dbErr => console.log(dbErr))
-    
+    })
+    .catch(dbErr => console.log(dbErr));
+
   // .then(userModel.create(newRate) => res.status(200).json(comment)).catch(next);
 });
 
