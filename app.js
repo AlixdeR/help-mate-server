@@ -46,7 +46,8 @@ app.use(passport.session());
 if (_DEVMODE === true) {
   app.use(function devMode(req, res, next) {
     req.user = {
-      _id: "5e5e453f94372d37a2a846fc",
+      _id: "5e605f8a0620fc074caa49e2",
+      
       username: "Gégé du 75",
       email: "gege@gmail.com",
       avatar: "https://res.cloudinary.com/gdaconcept/image/upload/v1575298339/user-pictures/jadlcjjnspfhknucjfkd.png",
@@ -61,11 +62,13 @@ var adRouter = require("./routes/ads");
 var userRouter = require("./routes/users");
 var commentRouter = require("./routes/comments");
 var authRouter = require("./routes/auth");
+var msgRouter = require("./routes/message");
 
 app.use("/ads", adRouter);
 app.use("/users", userRouter);
 app.use("/comments", commentRouter);
 app.use("/", authRouter);
+app.use("/messages", msgRouter);
 
 // app.get("*", function(req, res) {
 //   res.status(404).json("what???");

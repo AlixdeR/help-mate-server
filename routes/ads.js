@@ -23,7 +23,7 @@ router.get("/search", async (req, res, next) => {
 })
 
 router.get('/:id', function (req, res, next) {
-    adModel.findById(req.params.id)
+    adModel.findById(req.params.id).populate('author')
         .then(ad => res.status(200).json(ad))
         .catch(next)
 });
