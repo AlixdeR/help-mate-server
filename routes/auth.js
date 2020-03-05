@@ -5,6 +5,7 @@ const passport = require("passport");
 const bcrypt = require("bcrypt");
 const uploader = require("./../config/cloudinary");
 
+
 const minPasswordLength = 4;
 
 router.post("/signup", uploader.single("avatar"), (req, res, next) => {
@@ -61,6 +62,7 @@ router.post("/signin", (req, res, next) => {
         return res.json({ message: "Something went wrong logging in" });
       }
       const { _id, username, email, avatar, role } = user;
+      console.log("successful login", user)
       next(
         res.status(200).json({
           currentUser: {

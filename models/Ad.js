@@ -14,7 +14,7 @@ const adSchema = new Schema ({
     },
     category: {
         type: String,
-        enum: ['Bricolage', 'Ménage', "Visites de courtoisie", 'Courses']
+        enum: ['Bricolage', 'Ménage', "Visites", 'Courses']
     },
     description: String,
     adType: {

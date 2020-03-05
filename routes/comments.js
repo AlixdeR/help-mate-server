@@ -32,6 +32,7 @@ router.post("/:userId", (req, res, next) => {
   //   newComment.response = currentResponseId;
   // }
 
+  newComment.isResponse = currentResponseId ? true : false;
   commentModel
     .create(newComment)
     .then(createdComment => {
@@ -53,9 +54,15 @@ router.post("/:userId", (req, res, next) => {
                 },
                 { new: true }
               )
+              .populate("ads")
+              .populate({
+                path: "comments",
+                populate: {
+                  path: "response"
+                }
+              })
               .then(updatedUser => {
-                console.log(updatedUser);
-                res.send("Ok");
+                res.json(updatedUser);
               })
               .catch(next);
           })
@@ -71,9 +78,15 @@ router.post("/:userId", (req, res, next) => {
             },
             { new: true }
           )
+          .populate("ads")
+          .populate({
+            path: "comments",
+            populate: {
+              path: "response"
+            }
+          })
           .then(updatedUser => {
-            console.log(updatedUser);
-            res.send("Ok");
+            res.send(updatedUser);
           })
           .catch(next);
       }
