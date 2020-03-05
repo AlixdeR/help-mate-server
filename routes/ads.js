@@ -12,11 +12,34 @@ router.get('/', function (req, res, next) {
 });
 
 router.get("/search", async (req, res, next) => {
-    const regExp = new RegExp(req.query.q, "i");
-    const category = req.query.category;
-    console.log(req.query)
-    const adsSearch = adModel
-    .find({$and: [{$or: [{title: regExp}, {description: regExp}, {availabitlity: regExp}]}, {category: category}]})
+    // const regExp = new RegExp(req.query.q, "i");
+    // const category = req.query.category;
+    console.log("RQ",req.query)
+
+    var queryDB = {}
+     
+
+    for (let prop in req.query) {
+        if (prop==="q" && req.query.q!=="") queryDB.title =  new RegExp(req.query.q, "i");
+        else if (prop==="type" && req.query.type!=="") queryDB.adType = req.query.type;
+        else if (req.query[prop] !== "") queryDB[prop] = req.query[prop];
+    }
+
+    console.log("QDB", queryDB)
+    // var queryObject = JSON.parse(`{and: [${queryDB}]}`)
+    const isEmptyQuery = Boolean(Object.keys(queryDB).length)
+    
+    console.log(isEmptyQuery)
+    if (isEmptyQuery) { 
+        adModel.find({$and: [queryDB]})
+         .then(dbRes => {
+            console.log(dbRes)
+        res.json({ dbRes })
+    })
+    .catch(next)}
+    else adModel.find()
+    // const adsSearch = adModel
+    // .find({$and: [{$or: [{title: regExp}, {description: regExp}, {availabitlity: regExp}]}, {category: category}]}) //JSON.parse
     .then(dbRes => {
         console.log(dbRes);
         res.json({ dbRes })
