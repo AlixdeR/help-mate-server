@@ -75,9 +75,9 @@ app.use("/messages", msgRouter);
 //   res.status(404).json("what???");
 // });
 
-// app.use(function(err, req, res, next) {
-//   console.error(err.stack);
-//   res.status(500).json({ err });
-// });
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).json({ err });
+});
 
 module.exports = app;
