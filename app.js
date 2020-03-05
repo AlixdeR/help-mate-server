@@ -46,7 +46,7 @@ app.use(passport.session());
 if (_DEVMODE === true) {
   app.use(function devMode(req, res, next) {
     req.user = {
-      _id: "5e605f8a0620fc074caa49e2",
+      _id: "5e5fa6c65cf2019a9585d86c",
       
       username: "Gégé du 75",
       email: "gege@gmail.com",

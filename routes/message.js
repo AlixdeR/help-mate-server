@@ -4,10 +4,46 @@ const userModel = require("../models/User");
 const messageModel = require("../models/Message");
 
 router.get("/all/:my_id", (req, res, next) => {
+
     messageModel.find({ $or : [{to : req.params.my_id}, {from : req.params.my_id}]}).populate('from').populate('to')
-      .then(messages => res.status(201).json(messages)
-      ).catch(dbErr => console.log(dbErr))
+      .then(messages => {
+        res.status(201).json(messages)
+}).catch(dbErr => console.log(dbErr))
   });
+// router.get("/all/:my_id", (req, res, next) => {
+//     // function elementDoesntExist(el, msg){
+//     //     if (el.from._id == msg.from._id) {
+//     //         if(el.to._id !== msg.to._id) {
+//     //             console.log('vérifié', el,  msg)
+//     //             return true
+//     //         }else {return false}
+//     //     } else {
+//     //         if(el.from._id !== msg.to._id) {
+//     //             console.log('vérifié',el, msg)
+//     //             return true
+//     //         }else {return false}
+//     //     }
+//     // }
+//     messageModel.find({ $or : [{to : req.params.my_id}, {from : req.params.my_id}]}).populate('from').populate('to')
+//       .then(messages => {
+//         let conversations = messages.reduce( function(acc, currentEl, currentIndex, arr) {
+//             let idToPush;
+//             currentEl.from._id == req.params.my_id ? idToPush = currentEl.from._id : idToPush = currentEl.to._id;
+//             if (acc[0].includes(idToPush)) {
+//                 console.log('avant déjà',acc)
+//                 return acc
+//                 console.log('déjà',acc)
+//             } else {
+//                 console.log('avant pas encore',acc)
+//                 acc[0].push(idToPush);
+//                 acc[1].push(currentEl);
+//                 console.log('pas encore',acc)
+//                 return  acc
+//             }
+//         }, [[],[]])
+//         res.status(201).json(conversations[1])
+// }).catch(dbErr => console.log(dbErr))
+//   });
 
 router.get("/:to_id", (req, res, next) => {
   messageModel.find({ $or : [{to : req.params.to_id, from : req.user._id},{to : req.user._id, from : req.params.to_id}]})
@@ -16,8 +52,6 @@ router.get("/:to_id", (req, res, next) => {
 });
 
 router.post("/:to_id", (req, res, next) => {
-    console.log('to_id', req.params.to_id)
-    console.log('from_id', req.user._id)
 const newMessage = {
     from : req.user._id,
     to : req.params.to_id,
@@ -32,3 +66,14 @@ const newMessage = {
 
 
 module.exports = router;
+// const idToPush ;
+// userId==el.fromId ? idToPush = el.fromId : idToPush = el.toId;
+// if (accumulateur[0].match(idToPush)) {
+//     console.log('il y est déjà')
+// } else {
+//     accumulateur[0].push(idToPush)
+//     accumulateur[1].push(el)
+// }
+// return accumulateur
+
+// JSON(accumulateur[1])
