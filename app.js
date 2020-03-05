@@ -48,11 +48,15 @@ if (_DEVMODE === true) {
   app.use(function devMode(req, res, next) {
     req.user = {
 <<<<<<< HEAD
+<<<<<<< HEAD
       _id: "5e5fb68e186c1726647ccfc9",
       username: "wen",
       email: "wen@wen.com",
 =======
       _id: "5e5fa6c65cf2019a9585d86c",
+=======
+      _id: "5e60c93d218fc1087a6fa2e9",
+>>>>>>> 6a3bdadcd11dc7aeb685a4d3252354dd9caee09b
       
       username: "Gégé du 75",
       email: "gege@gmail.com",
