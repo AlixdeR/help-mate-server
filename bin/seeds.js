@@ -24,203 +24,203 @@ faker.locale = 'fr';
 //     gender: ''
 //   }))
 
-// const users = [{
-//     name: 'Mattéo',
-//     username: 'Mattéo.Guyot58',
-//     lastName: 'Guyot',
-//     avatar:
-//         'https://s3.amazonaws.com/uifaces/faces/twitter/ManikRathee/128.jpg',
-//     email: 'Matto.Guyot58.Royer8@hotmail.fr',
-//     birthday: '1985-09-17',
-//     comments: [],
-//     ads: [],
-//     rates: [],
-//     password: 'ikbNgVxUBn21kMa',
-//     status: 'particulier',
-//     gender: 'homme'
-// },
-// {
-//     name: 'Lucas',
-//     username: 'Lucas_Roger84',
-//     lastName: 'Roger',
-//     avatar:
-//         'https://s3.amazonaws.com/uifaces/faces/twitter/kurafire/128.jpg',
-//     email: 'Lucas_Roger8415@hotmail.fr',
-//     birthday: '1989-11-13',
-//     comments: [],
-//     ads: [],
-//     rates: [],
-//     password: 'kQyrOZ63DkQtsa2',
-//     status: 'particulier',
-//     gender: 'homme'
-// },
-// {
-//     name: 'Victor',
-//     username: 'Victor41',
-//     lastName: 'Deschamps',
-//     avatar:
-//         'https://s3.amazonaws.com/uifaces/faces/twitter/russoedu/128.jpg',
-//     email: 'Victor41_Deschamps29@yahoo.fr',
-//     birthday: '1961-09-11',
-//     comments: [],
-//     ads: [],
-//     rates: [],
-//     password: 'DEsDrTBiNCvJ7rT',
-//     status: 'particulier',
-//     gender: 'homme'
-// },
-// {
-//     name: 'Evan',
-//     username: 'Evan.Baron',
-//     lastName: 'Baron',
-//     avatar:
-//         'https://s3.amazonaws.com/uifaces/faces/twitter/ademilter/128.jpg',
-//     email: 'Evan.Baron77@yahoo.fr',
-//     birthday: '1953-08-31',
-//     comments: [],
-//     ads: [],
-//     rates: [],
-//     password: 'AnmtTgHPlNVrBhG',
-//     status: 'particulier',
-//     gender: 'homme'
-// },
-// {
-//     name: 'Charlotte',
-//     username: 'Charlotte_Guerin26',
-//     lastName: 'Guerin',
-//     avatar:
-//         'https://s3.amazonaws.com/uifaces/faces/twitter/weglov/128.jpg',
-//     email: 'Charlotte_Guerin26.Paul@gmail.com',
-//     birthday: '1982-02-07',
-//     comments: [],
-//     ads: [],
-//     rates: [],
-//     password: 'lFNGCw9etX4IXqj',
-//     status: 'particulier',
-//     gender: 'femme'
-// },
-// {
-//     name: 'Océane',
-//     username: 'Océane.Muller',
-//     lastName: 'Muller',
-//     avatar:
-//         'https://s3.amazonaws.com/uifaces/faces/twitter/peejfancher/128.jpg',
-//     email: 'Ocane.Muller35@hotmail.fr',
-//     birthday: '1946-04-08',
-//     comments: [],
-//     ads: [],
-//     rates: [],
-//     password: 'ybZVWPeK3YBNeMD',
-//     status: 'particulier',
-//     gender: 'femme'
-// },
-// {
-//     name: 'Hugo',
-//     username: 'Hugo_Martin26',
-//     lastName: 'Martin',
-//     avatar:
-//         'https://s3.amazonaws.com/uifaces/faces/twitter/kurtinc/128.jpg',
-//     email: 'Hugo_Martin265@yahoo.fr',
-//     birthday: '1949-12-02',
-//     comments: [],
-//     ads: [],
-//     rates: [],
-//     password: 'D8364FCdMYb4FPt',
-//     status: 'particulier',
-//     gender: 'homme'
-// },
-// {
-//     name: 'Antoine',
-//     username: 'Antoine32',
-//     lastName: 'Menard',
-//     avatar:
-//         'https://s3.amazonaws.com/uifaces/faces/twitter/vocino/128.jpg',
-//     email: 'Antoine32.Menard34@hotmail.fr',
-//     birthday: '1980-01-20',
-//     comments: [],
-//     ads: [],
-//     rates: [],
-//     password: 'SpBWDN9h_DCjrjl',
-//     status: 'particulier',
-//     gender: 'homme'
-// },
-// {
-//     name: 'Tom',
-//     username: 'Tom25',
-//     lastName: 'Gradur',
-//     avatar:
-//         'https://s3.amazonaws.com/uifaces/faces/twitter/maikelk/128.jpg',
-//     email: 'Tom2576@gmail.com',
-//     birthday: '1960-08-25',
-//     comments: [],
-//     ads: [],
-//     rates: [],
-//     password: 'W1xGfzmSHY0A3o5',
-//     status: 'particulier',
-//     gender: 'homme'
-// },
-// {
-//     name: 'Antoine',
-//     username: 'Antoine.Leclerc',
-//     lastName: 'Leclerc',
-//     avatar:
-//         'https://s3.amazonaws.com/uifaces/faces/twitter/pmeissner/128.jpg',
-//     email: 'Antoine.Leclerc.Huet@hotmail.fr',
-//     birthday: '1946-12-23',
-//     comments: [],
-//     ads: [],
-//     rates: [],
-//     password: 'lXTO3ZYwvA274hN',
-//     status: 'particulier',
-//     gender: 'homme'
-// },
-// {
-//     name: 'Clémence',
-//     username: 'Clémence69',
-//     lastName: 'Faure',
-//     avatar:
-//         'https://s3.amazonaws.com/uifaces/faces/twitter/kinday/128.jpg',
-//     email: 'Clmence69_Faure48@hotmail.fr',
-//     birthday: '1973-02-05',
-//     comments: [],
-//     ads: [],
-//     rates: [],
-//     password: 'kvzcOuzYdEVMywO',
-//     status: 'particulier',
-//     gender: 'femme'
-// },
-// {
-//     name: 'Sarah',
-//     username: 'Sarah99',
-//     lastName: 'Huet',
-//     avatar:
-//         'https://s3.amazonaws.com/uifaces/faces/twitter/AlbertoCococi/128.jpg',
-//     email: 'Sarah99.Huet@yahoo.fr',
-//     birthday: '1979-07-29',
-//     comments: [],
-//     ads: [],
-//     rates: [],
-//     password: 'nBpbgR3QP7DqYbi',
-//     status: 'particulier',
-//     gender: 'femme'
-// },
-// {
-//     name: 'Julien',
-//     username: 'Julien.Girard96',
-//     lastName: 'Girard',
-//     avatar:
-//         'https://s3.amazonaws.com/uifaces/faces/twitter/stevedesigner/128.jpg',
-//     email: 'Julien.Girard96_Denis@yahoo.fr',
-//     birthday: '1955-06-18',
-//     comments: [],
-//     ads: [],
-//     rates: [],
-//     password: 'F_48EnEOvVklIkL',
-//     status: 'particulier',
-//     gender: 'homme'
-// }]
+const users = [{
+    name: 'Mattéo',
+    username: 'Mattéo.Guyot58',
+    lastName: 'Guyot',
+    avatar:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/ManikRathee/128.jpg',
+    email: 'Matto.Guyot58.Royer8@hotmail.fr',
+    birthday: '1985-09-17',
+    comments: [],
+    ads: [],
+    rates: [],
+    password: 'ikbNgVxUBn21kMa',
+    status: 'particulier',
+    gender: 'homme'
+},
+{
+    name: 'Lucas',
+    username: 'Lucas_Roger84',
+    lastName: 'Roger',
+    avatar:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/kurafire/128.jpg',
+    email: 'Lucas_Roger8415@hotmail.fr',
+    birthday: '1989-11-13',
+    comments: [],
+    ads: [],
+    rates: [],
+    password: 'kQyrOZ63DkQtsa2',
+    status: 'particulier',
+    gender: 'homme'
+},
+{
+    name: 'Victor',
+    username: 'Victor41',
+    lastName: 'Deschamps',
+    avatar:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/russoedu/128.jpg',
+    email: 'Victor41_Deschamps29@yahoo.fr',
+    birthday: '1961-09-11',
+    comments: [],
+    ads: [],
+    rates: [],
+    password: 'DEsDrTBiNCvJ7rT',
+    status: 'particulier',
+    gender: 'homme'
+},
+{
+    name: 'Evan',
+    username: 'Evan.Baron',
+    lastName: 'Baron',
+    avatar:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/ademilter/128.jpg',
+    email: 'Evan.Baron77@yahoo.fr',
+    birthday: '1953-08-31',
+    comments: [],
+    ads: [],
+    rates: [],
+    password: 'AnmtTgHPlNVrBhG',
+    status: 'particulier',
+    gender: 'homme'
+},
+{
+    name: 'Charlotte',
+    username: 'Charlotte_Guerin26',
+    lastName: 'Guerin',
+    avatar:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/weglov/128.jpg',
+    email: 'Charlotte_Guerin26.Paul@gmail.com',
+    birthday: '1982-02-07',
+    comments: [],
+    ads: [],
+    rates: [],
+    password: 'lFNGCw9etX4IXqj',
+    status: 'particulier',
+    gender: 'femme'
+},
+{
+    name: 'Océane',
+    username: 'Océane.Muller',
+    lastName: 'Muller',
+    avatar:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/peejfancher/128.jpg',
+    email: 'Ocane.Muller35@hotmail.fr',
+    birthday: '1946-04-08',
+    comments: [],
+    ads: [],
+    rates: [],
+    password: 'ybZVWPeK3YBNeMD',
+    status: 'particulier',
+    gender: 'femme'
+},
+{
+    name: 'Hugo',
+    username: 'Hugo_Martin26',
+    lastName: 'Martin',
+    avatar:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/kurtinc/128.jpg',
+    email: 'Hugo_Martin265@yahoo.fr',
+    birthday: '1949-12-02',
+    comments: [],
+    ads: [],
+    rates: [],
+    password: 'D8364FCdMYb4FPt',
+    status: 'particulier',
+    gender: 'homme'
+},
+{
+    name: 'Antoine',
+    username: 'Antoine32',
+    lastName: 'Menard',
+    avatar:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/vocino/128.jpg',
+    email: 'Antoine32.Menard34@hotmail.fr',
+    birthday: '1980-01-20',
+    comments: [],
+    ads: [],
+    rates: [],
+    password: 'SpBWDN9h_DCjrjl',
+    status: 'particulier',
+    gender: 'homme'
+},
+{
+    name: 'Tom',
+    username: 'Tom25',
+    lastName: 'Gradur',
+    avatar:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/maikelk/128.jpg',
+    email: 'Tom2576@gmail.com',
+    birthday: '1960-08-25',
+    comments: [],
+    ads: [],
+    rates: [],
+    password: 'W1xGfzmSHY0A3o5',
+    status: 'particulier',
+    gender: 'homme'
+},
+{
+    name: 'Antoine',
+    username: 'Antoine.Leclerc',
+    lastName: 'Leclerc',
+    avatar:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/pmeissner/128.jpg',
+    email: 'Antoine.Leclerc.Huet@hotmail.fr',
+    birthday: '1946-12-23',
+    comments: [],
+    ads: [],
+    rates: [],
+    password: 'lXTO3ZYwvA274hN',
+    status: 'particulier',
+    gender: 'homme'
+},
+{
+    name: 'Clémence',
+    username: 'Clémence69',
+    lastName: 'Faure',
+    avatar:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/kinday/128.jpg',
+    email: 'Clmence69_Faure48@hotmail.fr',
+    birthday: '1973-02-05',
+    comments: [],
+    ads: [],
+    rates: [],
+    password: 'kvzcOuzYdEVMywO',
+    status: 'particulier',
+    gender: 'femme'
+},
+{
+    name: 'Sarah',
+    username: 'Sarah99',
+    lastName: 'Huet',
+    avatar:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/AlbertoCococi/128.jpg',
+    email: 'Sarah99.Huet@yahoo.fr',
+    birthday: '1979-07-29',
+    comments: [],
+    ads: [],
+    rates: [],
+    password: 'nBpbgR3QP7DqYbi',
+    status: 'particulier',
+    gender: 'femme'
+},
+{
+    name: 'Julien',
+    username: 'Julien.Girard96',
+    lastName: 'Girard',
+    avatar:
+        'https://s3.amazonaws.com/uifaces/faces/twitter/stevedesigner/128.jpg',
+    email: 'Julien.Girard96_Denis@yahoo.fr',
+    birthday: '1955-06-18',
+    comments: [],
+    ads: [],
+    rates: [],
+    password: 'F_48EnEOvVklIkL',
+    status: 'particulier',
+    gender: 'homme'
+}]
 
-// console.log(users)
+console.log(users)
 
 const adModel = require("./../models/Ad");
 // const commentModel = require("./../models/Comment");
