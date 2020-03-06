@@ -47,20 +47,9 @@ app.use(passport.session());
 if (_DEVMODE === true) {
   app.use(function devMode(req, res, next) {
     req.user = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-      _id: "5e5fb68e186c1726647ccfc9",
-      username: "wen",
-      email: "wen@wen.com",
-=======
-      _id: "5e5fa6c65cf2019a9585d86c",
-=======
       _id: "5e60c93d218fc1087a6fa2e9",
->>>>>>> 6a3bdadcd11dc7aeb685a4d3252354dd9caee09b
-      
       username: "Gégé du 75",
       email: "gege@gmail.com",
->>>>>>> 072239ce76fb50d02925fb4c1eb3bbb9a2128366
       avatar: "https://res.cloudinary.com/gdaconcept/image/upload/v1575298339/user-pictures/jadlcjjnspfhknucjfkd.png",
       // role: "admin",
     };
@@ -85,9 +74,9 @@ app.use("/messages", msgRouter);
 //   res.status(404).json("what???");
 // });
 
-// app.use(function(err, req, res, next) {
-//   console.error(err.stack);
-//   res.status(500).json({ err });
-// });
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).json({ err });
+});
 
 module.exports = app;
