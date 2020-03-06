@@ -48,7 +48,6 @@ if (_DEVMODE === true) {
   app.use(function devMode(req, res, next) {
     req.user = {
       _id: "5e60c93d218fc1087a6fa2e9",
-      
       username: "Gégé du 75",
       email: "gege@gmail.com",
       avatar: "https://res.cloudinary.com/gdaconcept/image/upload/v1575298339/user-pictures/jadlcjjnspfhknucjfkd.png",
