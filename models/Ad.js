@@ -14,7 +14,7 @@ const adSchema = new Schema ({
     },
     category: {
         type: String,
-        enum: ['Bricolage', 'Ménage', "Visites", 'Courses']
+        enum: ['Administratif','Aide Ménagère','Bricolage','Courses','Cours Particuliers','Don(s)', 'Transport/Déménagement', 'Visite(s) de Courtoisie' ]
     },
     description: String,
     adType: {
@@ -30,7 +30,10 @@ const adSchema = new Schema ({
         type: { type: String },
         coordinates: [Number]
     },
-    image: String,
+    image: {
+        type: String,
+        default : '/services-default-image.png'
+    },
     date: {
         type : Date,
         default: Date.now
@@ -45,3 +48,7 @@ adSchema.index({location: '2dsphere'});
 const adModel = mongoose.model("Ad", adSchema);
 
 module.exports = adModel;
+
+
+
+

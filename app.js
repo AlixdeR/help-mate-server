@@ -47,8 +47,7 @@ app.use(passport.session());
 if (_DEVMODE === true) {
   app.use(function devMode(req, res, next) {
     req.user = {
-      _id: "5e5fa6c65cf2019a9585d86c",
-      
+      _id: "5e60c93d218fc1087a6fa2e9",
       username: "Gégé du 75",
       email: "gege@gmail.com",
       avatar: "https://res.cloudinary.com/gdaconcept/image/upload/v1575298339/user-pictures/jadlcjjnspfhknucjfkd.png",
@@ -75,9 +74,9 @@ app.use("/messages", msgRouter);
 //   res.status(404).json("what???");
 // });
 
-// app.use(function(err, req, res, next) {
-//   console.error(err.stack);
-//   res.status(500).json({ err });
-// });
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).json({ err });
+});
 
 module.exports = app;
